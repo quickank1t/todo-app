@@ -15,7 +15,7 @@ MongoClient.connect('mongodb://localhost:27017/todoapp',(err, client)=>{
     // console.log(JSON.stringify(docs,undefined, 2));
     console.log(docs);
   },(err)=>{
-    console.log('unavle ro fleach todo' , err);
+    console.log('unale ro fleach todo' , err);
   });
   // db.collection('Todos').insertOne({
   //   text: 'First insert into mongodb',
