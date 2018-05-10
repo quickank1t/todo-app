@@ -1,14 +1,18 @@
 const mongoose = require('mongoose');
 
-var Todos = mongoose.model('AllTodo',{
+var Todos = mongoose.model('Todo',{
   text:{
-    type: String
+    type: String,
+    required: true,
+    trim: true
   },
   completed:{
-    type: Boolean
+    type: Boolean,
+    default: false
   },
   completedAt:{
-    type: Number
+    type: Number,
+    default: null
   }
 });
 
