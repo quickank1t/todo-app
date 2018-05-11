@@ -47,3 +47,10 @@ API : express, body-parser
 Test : supertest, expect, mocha and nodemon
 
 Database : mongodb, mongoose
+
+# deployment
+
+Used heroku for deployment
+```
+git push heroku master
+```
