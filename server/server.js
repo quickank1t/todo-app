@@ -1,8 +1,10 @@
+process.env.NODE_ENV = 'development';//only foe development
 require('./config/config');
 
 const express = require('express');
 const bodyParser = require('body-parser');
 const {ObjectID} = require('mongodb');
+const _= require('lodash');
 
 const {mongoose} = require('./db/mongoose');
 const {Todos} = require('./model/todos');
@@ -11,6 +13,16 @@ const {Users} = require('./model/users');
 var app = express();
 var port = process.env.PORT ;
 app.use(bodyParser.json());
+
+app.post('/user',(req, res)=>{
+  var body = _.pick(req.body, ['email', 'password']);
+  var newUser = new Users(body);
+
+  newUser.save().then(()=>{
+      res.send();
+  }).catch((e) => res.status(400).send(e));
+
+});
 
 app.post('/todos',(req, res) => {
   var newTodo = new Todos({
@@ -81,7 +93,7 @@ app.patch('todos/:id',(req,res)=>{
 
 });
 app.listen(port, () => {
-  console.log('Started... ');
+  console.log('Started in ' +port);
 });
 
 module.exports = {app};
