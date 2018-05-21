@@ -9,6 +9,7 @@ const _= require('lodash');
 const {mongoose} = require('./db/mongoose');
 const {Todos} = require('./model/todos');
 const {Users} = require('./model/users');
+const {authenticate} = require('./middelware/authenticate');
 
 var app = express();
 var port = process.env.PORT ;
@@ -26,6 +27,9 @@ app.post('/user',(req, res)=>{
 
 });
 
+app.get('/user/me',authenticate, (req,res)=>{
+  res.send(req.user);
+});
 app.post('/todos',(req, res) => {
   var newTodo = new Todos({
     text: req.body.text
