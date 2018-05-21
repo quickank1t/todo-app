@@ -19,7 +19,9 @@ app.post('/user',(req, res)=>{
   var newUser = new Users(body);
 
   newUser.save().then(()=>{
-      res.send();
+      return newUser.genrateAuthToken();
+  }).then((token)=>{
+    res.header('x-auth',token).send(newUser);
   }).catch((e) => res.status(400).send(e));
 
 });
