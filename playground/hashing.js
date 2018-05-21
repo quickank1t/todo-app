@@ -8,7 +8,9 @@ bcrypt.genSalt(10,(err,salt)=>{
     console.log(hash);
   });
 })
-// message = 'Krypton101x';
+
+
+// message ;
 //
 // var message = SHA256(message).toString();
 //
